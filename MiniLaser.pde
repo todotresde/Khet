@@ -14,14 +14,22 @@ class MiniLaser {
   }
 
   void dibujar() {
-    stroke(255,0,0);
-    strokeWeight(5);
 
     if(!estaCompleto) {
       calcularDireccion();
+      stroke(255,0,0,100);
+      strokeWeight(5);
+      line(posXIni,posYIni,pX,pY);
+      stroke(255,0,0);
+      strokeWeight(1);
       line(posXIni,posYIni,pX,pY);
     }
     else {
+      stroke(255,0,0,100);
+      strokeWeight(5);
+      line(posXIni,posYIni,posXFin,posYFin);
+      stroke(255,0,0);
+      strokeWeight(1);
       line(posXIni,posYIni,posXFin,posYFin);
     }
     //println(pX + "--" + pY);

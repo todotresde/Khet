@@ -4,6 +4,7 @@ class Pieza {
   int tam;
   PImage imagenPieza;
   int tipo;
+  boolean seleccionada;
   
   Pieza(int ptipo) {
     tipo = ptipo;
@@ -41,21 +42,8 @@ class Pieza {
   }
 
   void dibujar() {
-    
+      
     noStroke();
-     /*
-     fill(0,255,0);
-     rect(posX+1,posY+1,tam-2,tam-2);
-     
-     pushMatrix();
-     translate(posX, posY);
-     rotate(radians(rot));
-     stroke(0,0,0);
-     strokeWeight(2);
-     line(0,tam,tam,0);
-     popMatrix();
-     */
-    
     pushMatrix();
     translate(posX+tam/2, posY+tam/2);
     rotate(radians(rot));
@@ -67,9 +55,17 @@ class Pieza {
   
   void setColor(){
     if(tipo == 1){
-      fill(0,0,255,100);
+      if(!seleccionada){
+        fill(0,0,255,100);
+      }else{
+        fill(0,255,255,100);
+      }
     }else{
-      fill(255,0,0,100);
+      if(!seleccionada){
+        fill(255,0,0,100);
+      }else{
+        fill(255,255,0,100);
+      }
     }
     rect(-tam/2,-tam/2,tam,tam);
   }
@@ -129,7 +125,6 @@ class Pieza {
   }
 
   boolean centro(int pposX, int pposY) {
-    //println(rot+"---"+pposX+"---"+centroX+"---"+pposY+"---"+centroY);
     return (pposX == centroX && pposY == centroY);
   }
 
@@ -153,6 +148,14 @@ class Pieza {
     if(rot == 360) {
       rot = 0;
     }
+  }
+  
+  void seleccionar(){
+     seleccionada = true;
+  }
+  
+  void deseleccionar(){
+    seleccionada = false;
   }
   
 }

@@ -3,6 +3,7 @@ class Tablero {
   int cantFilas = 10;
   int cantCols = 8;
   int tamCelda = 50;
+  Pieza piezaSeleccionada;
 
   Tablero() {
     tablero = new Celda [cantFilas][cantCols];
@@ -45,7 +46,8 @@ class Tablero {
       for(int j=0; j<cantCols;j++) {
         Celda celda = tablero[i][j];
         if(celda.click(mouseX,mouseY)) {
-          return celda.pieza;
+          seleccionarPieza(celda.pieza);
+          return piezaSeleccionada;
         }
       }
     }
@@ -65,7 +67,7 @@ class Tablero {
     }
 
     if(pdir == "S") {
-      if(celda.posYTablero < cantFilas && tablero[ppieza.posXTablero][ppieza.posYTablero+1].pieza == null) {
+      if(celda.posYTablero < cantCols-1 && tablero[ppieza.posXTablero][ppieza.posYTablero+1].pieza == null) {
         tablero[ppieza.posXTablero][ppieza.posYTablero].quitarPieza();
         tablero[ppieza.posXTablero][ppieza.posYTablero+1].ponerPieza(ppieza,ppieza.rot);
         //celdaNueva.pieza.mover(pdir);
@@ -73,7 +75,7 @@ class Tablero {
     }
 
     if(pdir == "E") {
-      if(celda.posXTablero < cantCols && tablero[ppieza.posXTablero+1][ppieza.posYTablero].pieza == null) {
+      if(celda.posXTablero < cantFilas-1 && tablero[ppieza.posXTablero+1][ppieza.posYTablero].pieza == null) {
         tablero[ppieza.posXTablero][ppieza.posYTablero].quitarPieza();        
         tablero[ppieza.posXTablero+1][ppieza.posYTablero].ponerPieza(ppieza,ppieza.rot);
         //celdaNueva.pieza.mover(pdir);
@@ -88,8 +90,8 @@ class Tablero {
       }
     }
   }
-  
-  void quitarPieza(Pieza ppieza){
+
+  void quitarPieza(Pieza ppieza) {
     tablero[ppieza.posXTablero][ppieza.posYTablero].quitarPieza();
   }
 
@@ -98,40 +100,47 @@ class Tablero {
     tablero[0][4].ponerPieza(new Piramide(1),180);
     tablero[2][3].ponerPieza(new Piramide(2),270);
     tablero[2][4].ponerPieza(new Piramide(2),0);
-    
+
     tablero[2][1].ponerPieza(new Piramide(1),270);
     tablero[3][2].ponerPieza(new Piramide(2),0);
 
     tablero[4][0].ponerPieza(new Obelisco(1),180);
     tablero[5][0].ponerPieza(new Faraon(1),180);
     tablero[6][0].ponerPieza(new Obelisco(1),180);
-    
+
     tablero[7][0].ponerPieza(new Piramide(1),180);
-    
+
     tablero[4][3].ponerPieza(new Ra(1),90);
     tablero[5][3].ponerPieza(new Ra(1),0);
-    
+
     tablero[9][3].ponerPieza(new Piramide(2),0);
     tablero[9][4].ponerPieza(new Piramide(2),270);
     tablero[7][3].ponerPieza(new Piramide(1),180);
     tablero[7][4].ponerPieza(new Piramide(1),90);
-    
+
     tablero[6][5].ponerPieza(new Piramide(1),180);
     tablero[7][6].ponerPieza(new Piramide(2),90);
-    
+
     tablero[3][7].ponerPieza(new Obelisco(2),0);
     tablero[4][7].ponerPieza(new Faraon(2),0);
     tablero[5][7].ponerPieza(new Obelisco(2),0);
-    
+
     tablero[2][7].ponerPieza(new Piramide(2),0);
-  
+
     tablero[4][4].ponerPieza(new Ra(2),0);
     tablero[5][4].ponerPieza(new Ra(2),90);
-    
   }
-  
-  boolean salio(int pposX, int pposY){
+
+  boolean salio(int pposX, int pposY) {
     return(pposX > cantFilas*tamCelda || pposX < 0 || pposY > cantCols*tamCelda || pposY < 0);
+  }
+
+  void seleccionarPieza(Pieza ppieza) {
+    if(piezaSeleccionada != null) {
+      piezaSeleccionada.deseleccionar();
+    }
+    piezaSeleccionada = ppieza;
+    piezaSeleccionada.seleccionar();
   }
 }
 
