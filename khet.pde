@@ -1,7 +1,7 @@
 Juego juego;
 
 void setup(){
-  size(500,500,P3D);
+  size(600,500,P3D);
   juego = new Juego();
 }
 

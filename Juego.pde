@@ -6,8 +6,8 @@ class Juego{
   
   Juego(){
     tablero = new Tablero();
-    laserJugador1 = new Laser(15,0,"S",this);
-    laserJugador2 = new Laser(tablero.cantFilas * tablero.tamCelda - 15,tablero.cantCols * tablero.tamCelda,"N",this);
+    laserJugador1 = new Laser(tablero.tamCelda/2,0,"S",this);
+    laserJugador2 = new Laser(tablero.cantFilas * tablero.tamCelda - tablero.tamCelda/2,tablero.cantCols * tablero.tamCelda,"N",this);
     turnoJugador = 1;
   }
   

@@ -1,8 +1,8 @@
 class Tablero {
   Celda [][] tablero;
-  int cantFilas = 12;
+  int cantFilas = 10;
   int cantCols = 8;
-  int tamCelda = 30;
+  int tamCelda = 50;
 
   Tablero() {
     tablero = new Celda [cantFilas][cantCols];
@@ -98,25 +98,36 @@ class Tablero {
     tablero[0][4].ponerPieza(new Piramide(1),180);
     tablero[2][3].ponerPieza(new Piramide(2),270);
     tablero[2][4].ponerPieza(new Piramide(2),0);
+    
+    tablero[2][1].ponerPieza(new Piramide(1),270);
+    tablero[3][2].ponerPieza(new Piramide(2),0);
 
-    tablero[5][0].ponerPieza(new Obelisco(1),0);
-    tablero[6][0].ponerPieza(new Faraon(1),0);
-    tablero[7][0].ponerPieza(new Obelisco(1),0);
+    tablero[4][0].ponerPieza(new Obelisco(1),180);
+    tablero[5][0].ponerPieza(new Faraon(1),180);
+    tablero[6][0].ponerPieza(new Obelisco(1),180);
     
-    tablero[5][3].ponerPieza(new Ra(1),90);
-    tablero[6][3].ponerPieza(new Ra(1),0);
+    tablero[7][0].ponerPieza(new Piramide(1),180);
     
-    tablero[11][3].ponerPieza(new Piramide(2),0);
-    tablero[11][4].ponerPieza(new Piramide(2),270);
-    tablero[9][3].ponerPieza(new Piramide(1),180);
-    tablero[9][4].ponerPieza(new Piramide(1),90);
+    tablero[4][3].ponerPieza(new Ra(1),90);
+    tablero[5][3].ponerPieza(new Ra(1),0);
     
-    tablero[4][7].ponerPieza(new Obelisco(2),0);
-    tablero[5][7].ponerPieza(new Faraon(2),0);
-    tablero[6][7].ponerPieza(new Obelisco(2),0);
+    tablero[9][3].ponerPieza(new Piramide(2),0);
+    tablero[9][4].ponerPieza(new Piramide(2),270);
+    tablero[7][3].ponerPieza(new Piramide(1),180);
+    tablero[7][4].ponerPieza(new Piramide(1),90);
+    
+    tablero[6][5].ponerPieza(new Piramide(1),180);
+    tablero[7][6].ponerPieza(new Piramide(2),90);
+    
+    tablero[3][7].ponerPieza(new Obelisco(2),0);
+    tablero[4][7].ponerPieza(new Faraon(2),0);
+    tablero[5][7].ponerPieza(new Obelisco(2),0);
+    
+    tablero[2][7].ponerPieza(new Piramide(2),0);
   
-    tablero[5][4].ponerPieza(new Ra(2),0);
-    tablero[6][4].ponerPieza(new Ra(2),90);
+    tablero[4][4].ponerPieza(new Ra(2),0);
+    tablero[5][4].ponerPieza(new Ra(2),90);
+    
   }
   
   boolean salio(int pposX, int pposY){

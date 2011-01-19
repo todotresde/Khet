@@ -125,7 +125,7 @@ class Pieza {
 
   void definirImagen() {    
     imageMode(CENTER);
-    imagenPieza = loadImage("pieza.jpg");
+    imagenPieza = loadImage("piramide.png");
   }
 
   boolean centro(int pposX, int pposY) {
