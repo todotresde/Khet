@@ -40,8 +40,11 @@ class Juego{
       if(keyCode == RIGHT){
         tablero.moverPieza(piezaSeleccionada,"E");
       }
-      if(key == 'r' || key == 'R' ){
-        piezaSeleccionada.rotar();  
+      if(key == 'z' || key == 'Z' ){
+        piezaSeleccionada.rotar(1);  
+      }
+      if(key == 'x' || key == 'X' ){
+        piezaSeleccionada.rotar(-1);  
       }
       
     }

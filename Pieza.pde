@@ -143,8 +143,8 @@ class Pieza {
     }
   }
 
-  void rotar() {
-    rot += 90;
+  void rotar(int sentido) {
+    rot = rot + sentido * 90;
     if(rot == 360) {
       rot = 0;
     }
