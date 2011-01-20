@@ -89,7 +89,7 @@ class Pantalla {
   void pantalla3() {
     tituloJuego();
     textFont(font, 20); 
-    text("Con la 'S' dispara el laser\b Con el mouse se selecciona la ficha\b Con 'Z' y 'X' se rota la ficha. \b Con las flechas del teclado se mueve la ficha.", 50, 150,450,400);
+    text("Con la 'S' dispara el laser.\b Con el mouse se selecciona la ficha.\b Con 'Z' y 'X' se rota la ficha. \b Con las flechas del teclado se mueve la ficha.", 50, 150,450,400);
     botonVolver.dibujar();
   }
 
