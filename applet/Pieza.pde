@@ -148,9 +148,6 @@ class Pieza {
     if(rot == 360) {
       rot = 0;
     }
-    if(rot == -90) {
-      rot = 270;
-    }
   }
   
   void seleccionar(){
