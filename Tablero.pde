@@ -46,8 +46,10 @@ class Tablero {
       for(int j=0; j<cantCols;j++) {
         Celda celda = tablero[i][j];
         if(celda.click(mouseX,mouseY)) {
-          seleccionarPieza(celda.pieza);
-          return piezaSeleccionada;
+          if(celda.pieza != null){
+            seleccionarPieza(celda.pieza);
+            return piezaSeleccionada;
+          }
         }
       }
     }
