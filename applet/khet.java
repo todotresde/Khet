@@ -17,24 +17,117 @@ import java.util.regex.*;
 
 public class khet extends PApplet {
 
-Juego juego;
+Pantalla pantallaInicial;
 
 public void setup(){
   size(500,400,P3D);
-  juego = new Juego();
+  pantallaInicial = new Pantalla();
 }
 
 public void draw(){
   background(200);
-  juego.dibujar();
+  pantallaInicial.dibujar();
+  //juego.dibujar();
 }
 
 public void mousePressed(){
-  juego.click();
+  pantallaInicial.click();
+  //juego.click();
 }
 
 public void keyPressed(){
-  juego.press();
+  pantallaInicial.press();
+  //juego.press();
+}
+class Anubis extends Pieza {
+
+  Anubis(int ptipo) {
+    super(ptipo);
+  }
+
+  Anubis(int pposX, int pposY) {
+    super(pposX,pposY);
+  }
+
+  Anubis(int pposX, int pposY, int prot) {
+    super(pposX,pposY,prot);
+  }
+
+  public void definirImagen() {    
+    imageMode(CENTER);
+    imagenPieza = loadImage("ra.png");
+  }
+  
+  public String direccion(String pdir) {
+    if(pdir == "S") {
+      if(rot == 0 || rot == 180) {
+        return "O";
+      }
+      else{
+        return "E";
+      }
+    }
+
+    if(pdir == "N") {
+      if(rot == 180 || rot == 0) {
+        return "E";
+      }
+      else{
+        return "O";
+      }
+    }
+
+    if(pdir == "O") {
+      if(rot == 90 || rot == 270) {
+        return "N";
+      }
+      else{
+        return "S";
+      }
+    }
+
+    if(pdir == "E") {
+      if(rot == 90 || rot == 270) {
+        return "S";
+      }
+      else {
+        return "N";
+      }
+    }
+
+    return "";
+  }
+}
+
+class Boton{
+   String texto;
+   int posX, posY, tamX, tamY, fontSize;
+   PFont font;
+   
+   
+   Boton(String ptexto,int pposX,int pposY){
+     font = loadFont("Purisa-Bold-32.vlw");
+     texto = ptexto;
+     posX = pposX;
+     posY = pposY;
+     fontSize = 20;
+     tamX = round(textWidth(texto)) * 2;
+     tamY = fontSize;
+   }
+   
+   public void dibujar(){
+     //fill(255,0,0,50);
+     //rect(posX,posY-tamY,tamX,tamY);
+     textFont(font, fontSize); 
+     text(texto, posX, posY);
+   }
+   
+   public boolean click(){
+     //println(mouseX + "-" + mouseY + ":" + posX + "-" + posY + "-" + (posX+tamX) + "-" + (posY-tamY));
+     //println(posX < mouseX && posX+tamX > mouseX && posY-tamY < mouseY && posY > mouseY);
+     return(posX < mouseX && posX+tamX > mouseX && posY-tamY < mouseY && posY > mouseY);
+   }
+
 }
 class Celda {
   Pieza pieza;
@@ -265,7 +358,13 @@ class Laser {
   }
 
   public void rebote(String pdir) {
-    agregarMiniLaser(miniLasers[cantMiniLasers-1].pX, miniLasers[cantMiniLasers-1].pY, pdir);
+    String [] direcciones = splitTokens(pdir);
+    if(direcciones.length == 1){
+      agregarMiniLaser(miniLasers[cantMiniLasers-1].pX, miniLasers[cantMiniLasers-1].pY, direcciones[0]);
+    }else{
+      agregarMiniLaser(miniLasers[cantMiniLasers-1].pX, miniLasers[cantMiniLasers-1].pY, direcciones[0]);
+      agregarMiniLaser(miniLasers[cantMiniLasers-1].pX, miniLasers[cantMiniLasers-1].pY, direcciones[1]);
+    }
   }
   
   public void disparar(){
@@ -365,6 +464,122 @@ class Obelisco extends Pieza {
   
   public String direccion(String pdir) { 
     return "";
+  }
+}
+
+class Pantalla {
+  PFont font;
+  Boton botonJ1, botonJ2, botonReglas, botonCreditos, botonVolver;
+  boolean activoBotonJ1, activoBotonJ2, activoBotonReglas, activoBotonCreditos, activoBotonVolver;
+  Juego juego;
+
+  Pantalla() {
+    font = loadFont("Purisa-Bold-32.vlw");
+    botonJ1 = new Boton("1 Jugador",200, 230);
+    botonJ2 = new Boton("2 Jugadores",200, 260);
+    botonReglas = new Boton("Reglas",200, 290);
+    botonCreditos = new Boton("Creditos",200, 320);
+    botonVolver = new Boton("Volver", 400, 350);
+
+    resetearEstadoBotones();
+    juego = new Juego();
+  }
+
+  public void dibujar() {
+    if(activoBotonJ1) {
+      pantalla2();
+    }
+    else if(activoBotonJ2) {
+      juego.dibujar();
+    }
+    else if(activoBotonReglas) {
+      pantalla3();
+    }
+    else if(activoBotonCreditos) {
+      pantalla4();
+    }
+
+    else {
+      pantalla1();
+    }
+  }
+
+  public void click() {
+    if(!activoBotonJ2) {
+      if(botonJ1.click()) {
+        activoBotonJ1 = true;
+      }
+      if(botonJ2.click()) {
+        activoBotonJ2 = true;
+      }
+      if(botonReglas.click()) {
+        activoBotonReglas = true;
+      }
+      if(botonCreditos.click()) {
+        activoBotonCreditos = true;
+      }
+      if(botonVolver.click()) {
+        resetearEstadoBotones();
+        activoBotonVolver = true;
+      }
+    }
+    else {
+      juego.click();
+    }
+  }
+
+  public void press() {
+    if(activoBotonJ2 && ((key == 'r') || (key == 'R'))) {
+      resetearEstadoBotones();
+    }
+    else { 
+      if(activoBotonJ2) {
+        juego.press();
+      }
+    }
+  }
+
+  public void pantalla1() {
+    tituloJuego();
+    botonJ1.dibujar();
+    botonJ2.dibujar();
+    botonReglas.dibujar();
+    botonCreditos.dibujar();
+  }
+
+  public void pantalla2() {
+    tituloJuego();
+    textFont(font, 20); 
+    text("Se ve que no tenes muchos amigos y queres jugar solo. Mejor buscate mas amigos y juga de a dos!!", 50, 150,450,200);
+    botonJ2.dibujar();
+    botonVolver.dibujar();
+  }
+
+  public void pantalla3() {
+    tituloJuego();
+    textFont(font, 20); 
+    text("Con la 'S' dispara el laser.\b Con el mouse se selecciona la ficha.\b Con 'Z' y 'X' se rota la ficha. \b Con las flechas del teclado se mueve la ficha.", 50, 150,450,400);
+    botonVolver.dibujar();
+  }
+
+  public void pantalla4() {
+    tituloJuego();
+    textFont(font, 20); 
+    text("Creditos!!!!", 50, 150,450,400);
+    botonVolver.dibujar();
+  }
+
+  public void tituloJuego() {
+    textFont(font, 52); 
+    text("Khet", 150, 100);
+  }
+
+  public void resetearEstadoBotones() {
+    activoBotonJ1 = false;
+    activoBotonJ2 = false;
+    activoBotonReglas = false;
+    activoBotonCreditos = false;
+    activoBotonVolver = false;
   }
 }
 
@@ -481,6 +696,7 @@ class Pieza {
   }
   
   public boolean rebotaLaser(String pdir){
+    println(pdir + "-" + direccion(pdir));
     return (direccion(pdir) != "");
   }
 
@@ -517,6 +733,9 @@ class Pieza {
     rot = rot + sentido * 90;
     if(rot == 360) {
       rot = 0;
+    }
+    if(rot == -90) {
+      rot = 270;
     }
   }
   
@@ -572,37 +791,37 @@ class Ra extends Pieza {
   public String direccion(String pdir) {
     if(pdir == "S") {
       if(rot == 0 || rot == 180) {
-        return "O";
+        return "S O";
       }
       else{
-        return "E";
+        return "S E";
       }
     }
 
     if(pdir == "N") {
       if(rot == 180 || rot == 0) {
-        return "E";
+        return "N E";
       }
       else{
-        return "O";
+        return "N O";
       }
     }
 
     if(pdir == "O") {
       if(rot == 90 || rot == 270) {
-        return "N";
+        return "O N";
       }
       else{
-        return "S";
+        return "O S";
       }
     }
 
     if(pdir == "E") {
       if(rot == 90 || rot == 270) {
-        return "S";
+        return "E S";
       }
       else {
-        return "N";
+        return "E N";
       }
     }
 
@@ -658,8 +877,10 @@ class Tablero {
       for(int j=0; j<cantCols;j++) {
         Celda celda = tablero[i][j];
         if(celda.click(mouseX,mouseY)) {
-          seleccionarPieza(celda.pieza);
-          return piezaSeleccionada;
+          if(celda.pieza != null){
+            seleccionarPieza(celda.pieza);
+            return piezaSeleccionada;
+          }
         }
       }
     }
@@ -739,8 +960,8 @@ class Tablero {
 
     tablero[2][7].ponerPieza(new Piramide(2),0);
 
-    tablero[4][4].ponerPieza(new Ra(2),0);
-    tablero[5][4].ponerPieza(new Ra(2),90);
+    tablero[4][4].ponerPieza(new Anubis(2),0);
+    tablero[5][4].ponerPieza(new Anubis(2),90);
   }
 
   public boolean salio(int pposX, int pposY) {

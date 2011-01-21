@@ -1,19 +1,22 @@
-Juego juego;
+Pantalla pantallaInicial;
 
 void setup(){
   size(500,400,P3D);
-  juego = new Juego();
+  pantallaInicial = new Pantalla();
 }
 
 void draw(){
   background(200);
-  juego.dibujar();
+  pantallaInicial.dibujar();
+  //juego.dibujar();
 }
 
 void mousePressed(){
-  juego.click();
+  pantallaInicial.click();
+  //juego.click();
 }
 
 void keyPressed(){
-  juego.press();
+  pantallaInicial.press();
+  //juego.press();
 }

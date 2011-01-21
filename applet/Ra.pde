@@ -20,37 +20,37 @@ class Ra extends Pieza {
   String direccion(String pdir) {
     if(pdir == "S") {
       if(rot == 0 || rot == 180) {
-        return "O";
+        return "S O";
       }
       else{
-        return "E";
+        return "S E";
       }
     }
 
     if(pdir == "N") {
       if(rot == 180 || rot == 0) {
-        return "E";
+        return "N E";
       }
       else{
-        return "O";
+        return "N O";
       }
     }
 
     if(pdir == "O") {
       if(rot == 90 || rot == 270) {
-        return "N";
+        return "O N";
       }
       else{
-        return "S";
+        return "O S";
       }
     }
 
     if(pdir == "E") {
       if(rot == 90 || rot == 270) {
-        return "S";
+        return "E S";
       }
       else {
-        return "N";
+        return "E N";
       }
     }
 

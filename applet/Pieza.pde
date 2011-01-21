@@ -111,6 +111,7 @@ class Pieza {
   }
   
   boolean rebotaLaser(String pdir){
+    println(pdir + "-" + direccion(pdir));
     return (direccion(pdir) != "");
   }
 
@@ -147,6 +148,9 @@ class Pieza {
     rot = rot + sentido * 90;
     if(rot == 360) {
       rot = 0;
+    }
+    if(rot == -90) {
+      rot = 270;
     }
   }
   

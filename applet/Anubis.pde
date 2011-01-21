@@ -1,14 +1,14 @@
-class Ra extends Pieza {
+class Anubis extends Pieza {
 
-  Ra(int ptipo) {
+  Anubis(int ptipo) {
     super(ptipo);
   }
 
-  Ra(int pposX, int pposY) {
+  Anubis(int pposX, int pposY) {
     super(pposX,pposY);
   }
 
-  Ra(int pposX, int pposY, int prot) {
+  Anubis(int pposX, int pposY, int prot) {
     super(pposX,pposY,prot);
   }
 
@@ -18,45 +18,43 @@ class Ra extends Pieza {
   }
   
   String direccion(String pdir) {
-    String dir = "";
-    println("ACA !!!" + pdir + "-"); 
     if(pdir == "S") {
       if(rot == 0 || rot == 180) {
-        dir = "S O";
+        return "O";
       }
       else{
-        dir = "S E";
+        return "E";
       }
     }
 
     if(pdir == "N") {
       if(rot == 180 || rot == 0) {
-        dir = "N E";
+        return "E";
       }
       else{
-        dir = "N O";
+        return "O";
       }
     }
 
     if(pdir == "O") {
       if(rot == 90 || rot == 270) {
-        dir = "O N";
+        return "N";
       }
       else{
-        dir = "O S";
+        return "S";
       }
     }
 
     if(pdir == "E") {
       if(rot == 90 || rot == 270) {
-        dir = "E S";
+        return "S";
       }
       else {
-        dir = "E N";
+        return "N";
       }
     }
-    println("ACA2 !!!" + rot);
-    return dir;
+
+    return "";
   }
 }
 

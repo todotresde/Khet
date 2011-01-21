@@ -82,13 +82,14 @@ class Pantalla {
     tituloJuego();
     textFont(font, 20); 
     text("Se ve que no tenes muchos amigos y queres jugar solo. Mejor buscate mas amigos y juga de a dos!!", 50, 150,450,200);
+    botonJ2.dibujar();
     botonVolver.dibujar();
   }
 
   void pantalla3() {
     tituloJuego();
     textFont(font, 20); 
-    text("Con la 'S' dispara el laser.\b Con el mouse se selecciona la ficha.\b Con 'Z' y 'X' se rota la ficha. \b Con las flechas del teclado se mueve la ficha.\b Con la 'R' durante el juego, vuelve al menu principal.", 50, 150,450,400);
+    text("Con la 'S' dispara el laser.\b Con el mouse se selecciona la ficha.\b Con 'Z' y 'X' se rota la ficha. \b Con las flechas del teclado se mueve la ficha.", 50, 150,450,400);
     botonVolver.dibujar();
   }
 

@@ -129,8 +129,8 @@ class Tablero {
 
     tablero[2][7].ponerPieza(new Piramide(2),0);
 
-    tablero[4][4].ponerPieza(new Ra(2),0);
-    tablero[5][4].ponerPieza(new Ra(2),90);
+    tablero[4][4].ponerPieza(new Anubis(2),0);
+    tablero[5][4].ponerPieza(new Anubis(2),90);
   }
 
   boolean salio(int pposX, int pposY) {

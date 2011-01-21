@@ -111,6 +111,7 @@ class Pieza {
   }
   
   boolean rebotaLaser(String pdir){
+    println("PIEZA:" + pdir + "-" + direccion(pdir));
     return (direccion(pdir) != "");
   }
 

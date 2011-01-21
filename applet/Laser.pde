@@ -57,7 +57,13 @@ class Laser {
   }
 
   void rebote(String pdir) {
-    agregarMiniLaser(miniLasers[cantMiniLasers-1].pX, miniLasers[cantMiniLasers-1].pY, pdir);
+    String [] direcciones = splitTokens(pdir);
+    if(direcciones.length == 1){
+      agregarMiniLaser(miniLasers[cantMiniLasers-1].pX, miniLasers[cantMiniLasers-1].pY, direcciones[0]);
+    }else{
+      agregarMiniLaser(miniLasers[cantMiniLasers-1].pX, miniLasers[cantMiniLasers-1].pY, direcciones[0]);
+      agregarMiniLaser(miniLasers[cantMiniLasers-1].pX, miniLasers[cantMiniLasers-1].pY, direcciones[1]);
+    }
   }
   
   void disparar(){
