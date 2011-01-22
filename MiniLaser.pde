@@ -3,6 +3,7 @@ class MiniLaser {
   int pX, pY;
   String dir;
   boolean estaCompleto;
+  int velocidad;
 
   MiniLaser(int pposXIni, int pposYIni, String pdir) {
     posXIni = pposXIni;
@@ -11,6 +12,7 @@ class MiniLaser {
     pY = posYIni;
     dir = pdir;
     estaCompleto = false;
+    velocidad = 5;
   }
 
   void dibujar() {
@@ -37,16 +39,16 @@ class MiniLaser {
 
   void calcularDireccion() {
     if(dir == "N") {
-      pY--;
+      pY-=velocidad;
     }
     if(dir == "S") {
-      pY++;
+      pY+=velocidad;
     }
     if(dir == "E") {
-      pX++;
+      pX+=velocidad;
     }
     if(dir == "O") {
-      pX--;
+      pX-=velocidad;
     }
   }
 

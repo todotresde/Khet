@@ -1,22 +1,33 @@
-Pantalla pantallaInicial;
+import ddf.minim.*;
+import ddf.minim.signals.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
 
+Pantalla pantallaInicial;
+Minim minim;
+  
 void setup(){
   size(500,400,P3D);
-  pantallaInicial = new Pantalla();
+  minim = new Minim(this);
+  pantallaInicial = new Pantalla();  
 }
 
 void draw(){
   background(200);
   pantallaInicial.dibujar();
-  //juego.dibujar();
 }
 
 void mousePressed(){
   pantallaInicial.click();
-  //juego.click();
 }
 
 void keyPressed(){
   pantallaInicial.press();
-  //juego.press();
 }
+
+void stop(){
+  pantallaInicial.stop();
+  minim.stop(); 
+  super.stop();
+}
+

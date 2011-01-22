@@ -6,9 +6,12 @@ class Pieza {
   int tipo;
   boolean seleccionada;
   
+  AudioPlayer moverPieza;
+  
   Pieza(int ptipo) {
     tipo = ptipo;
     definirImagen();
+    definirAudio();
   }
 
   Pieza(int pposX, int pposY) {
@@ -18,6 +21,7 @@ class Pieza {
     posY = pposY * 50;
     definirCentro();
     definirImagen();
+    definirAudio();
   }
 
   Pieza(int pposX, int pposY, int prot) {
@@ -28,6 +32,7 @@ class Pieza {
     rot = prot;
     definirCentro();
     definirImagen();
+    definirAudio();
   }
 
   void setPieza(int pposX, int pposY, int prot, int ptam) {
@@ -39,6 +44,10 @@ class Pieza {
     tam = ptam;
     definirCentro();
     definirImagen();
+    
+    if(seleccionada){ 
+      moverPieza.play(1);
+    }
   }
 
   void dibujar() {
@@ -71,47 +80,48 @@ class Pieza {
   }
 
   String direccion(String pdir) {
+    String direccion = "";
+    
     if(pdir == "S") {
       if(rot == 0) {
-        return "O";
+        direccion = "O";
       }
       else if(rot == 90) {
-        return "E";
+        direccion = "E";
       }
     }
 
     if(pdir == "N") {
       if(rot == 180) {
-        return "E";
+        direccion = "E";
       }
       else if(rot == 270) {
-        return "O";
+        direccion = "O";
       }
     }
 
     if(pdir == "O") {
       if(rot == 90) {
-        return "N";
+        direccion = "N";
       }
       else if(rot == 180) {
-        return "S";
+        direccion = "S";
       }
     }
 
     if(pdir == "E") {
       if(rot == 270) {
-        return "S";
+        direccion = "S";
       }
       else if(rot == 0) {
-        return "N";
+        direccion = "N";
       }
     }
 
-    return "";
+    return direccion;
   }
   
   boolean rebotaLaser(String pdir){
-    println("PIEZA:" + pdir + "-" + direccion(pdir));
     return (direccion(pdir) != "");
   }
 
@@ -130,6 +140,7 @@ class Pieza {
   }
 
   void mover(String pdir) {
+    
     if(pdir == "N"){
       setPieza(posX,posY-1,rot,tam);
     }
@@ -162,5 +173,12 @@ class Pieza {
     seleccionada = false;
   }
   
+  void definirAudio(){
+    moverPieza = minim.loadFile("pieza.wav");
+  }
+  
+  void stop(){
+    moverPieza.close();
+  }
 }
 

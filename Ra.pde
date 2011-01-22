@@ -20,7 +20,7 @@ class Ra extends Pieza {
   String direccion(String pdir) {
     String dir = "";
     println("ACA !!!" + pdir + "-"); 
-    if(pdir == "S") {
+    if(pdir.equals("S")) {
       if(rot == 0 || rot == 180) {
         dir = "S O";
       }
@@ -29,7 +29,7 @@ class Ra extends Pieza {
       }
     }
 
-    if(pdir == "N") {
+    if(pdir.equals("N")) {
       if(rot == 180 || rot == 0) {
         dir = "N E";
       }
@@ -38,7 +38,7 @@ class Ra extends Pieza {
       }
     }
 
-    if(pdir == "O") {
+    if(pdir.equals("O")) {
       if(rot == 90 || rot == 270) {
         dir = "O N";
       }
@@ -47,7 +47,7 @@ class Ra extends Pieza {
       }
     }
 
-    if(pdir == "E") {
+    if(pdir.equals("E")) {
       if(rot == 90 || rot == 270) {
         dir = "E S";
       }

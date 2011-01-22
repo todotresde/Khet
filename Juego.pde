@@ -68,4 +68,10 @@ class Juego{
     return turnoJugador;
   }
   
+  void stop(){
+    laserJugador1.stop();
+    laserJugador2.stop();
+    tablero.stop();
+  }
+  
 }

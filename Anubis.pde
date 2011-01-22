@@ -14,7 +14,7 @@ class Anubis extends Pieza {
 
   void definirImagen() {    
     imageMode(CENTER);
-    imagenPieza = loadImage("ra.png");
+    imagenPieza = loadImage("anubis.png");
   }
   
   String direccion(String pdir) {

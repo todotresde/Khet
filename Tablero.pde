@@ -4,6 +4,8 @@ class Tablero {
   int cantCols = 8;
   int tamCelda = 50;
   Pieza piezaSeleccionada;
+  
+  AudioPlayer explosion;
 
   Tablero() {
     tablero = new Celda [cantFilas][cantCols];
@@ -15,6 +17,8 @@ class Tablero {
     }
 
     posicionInicial();
+    
+    explosion = minim.loadFile("explosion.wav");
   }
 
   void dibujar() {
@@ -95,6 +99,7 @@ class Tablero {
 
   void quitarPieza(Pieza ppieza) {
     tablero[ppieza.posXTablero][ppieza.posYTablero].quitarPieza();
+    explosion.play(1);
   }
 
   void posicionInicial() {
@@ -112,8 +117,8 @@ class Tablero {
 
     tablero[7][0].ponerPieza(new Piramide(1),180);
 
-    tablero[4][3].ponerPieza(new Ra(1),90);
-    tablero[5][3].ponerPieza(new Ra(1),0);
+    tablero[4][3].ponerPieza(new Anubis(1),90);
+    tablero[5][3].ponerPieza(new Anubis(1),0);
 
     tablero[9][3].ponerPieza(new Piramide(2),0);
     tablero[9][4].ponerPieza(new Piramide(2),270);
@@ -143,6 +148,10 @@ class Tablero {
     }
     piezaSeleccionada = ppieza;
     piezaSeleccionada.seleccionar();
+  }
+  
+  void stop(){
+    explosion.close();
   }
 }
 

@@ -111,5 +111,9 @@ class Pantalla {
     activoBotonCreditos = false;
     activoBotonVolver = false;
   }
+  
+  void stop(){
+    juego.stop();
+  }
 }
 
