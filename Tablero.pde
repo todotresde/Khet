@@ -50,12 +50,11 @@ class Tablero {
           if(celda.pieza != null){
             seleccionarPieza(celda.pieza);
             return piezaSeleccionada;
+          }else{
+            piezaSeleccionada.deseleccionar();
           }
         }
       }
-    }
-    if(piezaSeleccionada != null){
-      return piezaSeleccionada;
     }
     return null;
   }
