@@ -46,7 +46,7 @@ class Pieza {
     definirImagen();
     
     if(seleccionada){ 
-      audioMoverPieza.play(3);
+      audioMoverPieza.play(1);
     }
   }
 

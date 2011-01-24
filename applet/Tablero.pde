@@ -6,7 +6,7 @@ class Tablero {
   Pieza piezaSeleccionada;
   
   AudioPlayer explosion;
-  
+
   Tablero() {
     tablero = new Celda [cantFilas][cantCols];
 
@@ -53,9 +53,6 @@ class Tablero {
           }
         }
       }
-    }
-    if(piezaSeleccionada != null){
-      return piezaSeleccionada;
     }
     return null;
   }
