@@ -10,7 +10,7 @@ class Pantalla {
     botonJ2 = new Boton("2 Jugadores",200, 260);
     botonReglas = new Boton("Reglas",200, 290);
     botonCreditos = new Boton("Creditos",200, 320);
-    botonVolver = new Boton("Volver", 400, 350);
+    botonVolver = new Boton("Volver", 400, 370);
 
     resetearEstadoBotones();
     juego = new Juego();
@@ -87,8 +87,16 @@ class Pantalla {
 
   void pantalla3() {
     tituloJuego();
-    textFont(font, 20); 
-    text("Con la 'S' dispara el laser.\b Con el mouse se selecciona la ficha.\b Con 'Z' y 'X' se rota la ficha. \b Con las flechas del teclado se mueve la ficha.\b Con la 'R' durante el juego, vuelve al menu principal.", 50, 150,450,400);
+    textFont(font, 15); 
+    text("* Con la 'S' dispara el laser.",50,150);
+    textFont(font, 15);
+    text("* Con el mouse se selecciona la ficha.", 50, 190);
+    textFont(font, 15);
+    text("* Con 'Z' y 'X' se rota la ficha.", 50, 230);
+    textFont(font, 15);
+    text("* Con las flechas del teclado se mueve la ficha.", 50, 270, 450, 400);
+    textFont(font, 15);
+    text("* Con la 'R' durante el juego, vuelve al menu principal.", 50, 310, 450, 400);
     botonVolver.dibujar();
   }
 
@@ -101,7 +109,7 @@ class Pantalla {
 
   void tituloJuego() {
     textFont(font, 52); 
-    text("Khet", 150, 100);
+    text("Khet", 150, 80);
   }
 
   void resetearEstadoBotones() {
