@@ -97,6 +97,8 @@ class Tablero {
   }
 
   void configuracion1() {
+    tablero[0][0].ponerPieza(new Esfinge(1),270);
+    
     tablero[0][3].ponerPieza(new Piramide(1),90);
     tablero[0][4].ponerPieza(new Piramide(1),180);
     tablero[2][3].ponerPieza(new Piramide(2),270);
@@ -130,6 +132,8 @@ class Tablero {
 
     tablero[4][4].ponerPieza(new Anubis(2),0);
     tablero[5][4].ponerPieza(new Anubis(2),90);
+    
+    tablero[9][7].ponerPieza(new Esfinge(2),90);
   }
 
   boolean salio(int pposX, int pposY) {
