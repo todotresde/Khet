@@ -16,6 +16,7 @@ class MiniLaser {
   }
 
   void dibujar() {
+
     if(!estaCompleto) {
       calcularDireccion();
       stroke(255,0,0,100);
@@ -33,6 +34,7 @@ class MiniLaser {
       strokeWeight(1);
       line(posXIni,posYIni,posXFin,posYFin);
     }
+    //println(pX + "--" + pY);
   }
 
   void calcularDireccion() {

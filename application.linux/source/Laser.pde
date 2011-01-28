@@ -13,15 +13,12 @@ class Laser {
     miniLasers = new MiniLaser[1000];
     disparar = false;
     agregarMiniLaser(pposX,pposY,pdir);
-    juego = pjuego;
-    setLaser(pposX,pposY,pdir);
-    laser = minim.loadFile("laser.wav");
-  }
-  
-  void setLaser(int pposX, int pposY, String pdir){
     originalDir = pdir;
-    posX = pposX + juego.tablero.tamCelda/2;
-    posY = pposY + juego.tablero.tamCelda/2;
+    posX = pposX;
+    posY = pposY;
+    juego = pjuego;
+
+    laser = minim.loadFile("laser.wav");
   }
 
   int dibujar(Tablero ptablero) {

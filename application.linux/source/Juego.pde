@@ -1,15 +1,21 @@
 class Juego{
+  Laser laserJugador1,laserJugador2;
   Tablero tablero;
-  Pieza piezaSeleccionada,piezaLaserJugador1,piezaLaserJugador2;
+  Pieza piezaSeleccionada;
   int turnoJugador;
   
   Juego(){
-    tablero = new Tablero(this);
+    tablero = new Tablero();
+    laserJugador1 = new Laser(tablero.tamCelda/2,0,"S",this);
+    laserJugador2 = new Laser(tablero.cantFilas * tablero.tamCelda - tablero.tamCelda/2,tablero.cantCols * tablero.tamCelda,"N",this);
     turnoJugador = 1;
   }
   
   void dibujar(){
     tablero.dibujar();
+    
+    laserJugador1.dibujar(tablero);
+    laserJugador2.dibujar(tablero);
   }
   
   void click(){
@@ -46,13 +52,11 @@ class Juego{
   
   void dispararLaser(){
     println("T" + turnoJugador);
-    
     if(turnoJugador == 1){
-      piezaLaserJugador1.disparar();
+      laserJugador1.disparar();
     }else{
-      piezaLaserJugador2.disparar();
+      laserJugador2.disparar();
     }
-    
   }
   
   int cambiarTurnoJugador(){
@@ -64,26 +68,9 @@ class Juego{
     return turnoJugador;
   }
   
-  void iniciar(int tipoJuego){
-    tablero.resetear();
-    if(tipoJuego == 1){
-      tablero.configuracion1();
-    }
-  }
-  
-  void laserJugador1(Pieza ppieza){
-    piezaLaserJugador1 = ppieza;
-  }
-  
-  void laserJugador2(Pieza ppieza){
-    piezaLaserJugador2 = ppieza;
-  }
-  
   void stop(){
-    /*
     laserJugador1.stop();
     laserJugador2.stop();
-    */
     tablero.stop();
   }
   

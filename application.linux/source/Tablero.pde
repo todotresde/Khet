@@ -4,11 +4,10 @@ class Tablero {
   int cantCols = 8;
   int tamCelda = 50;
   Pieza piezaSeleccionada;
-  Juego juego;
-  AudioPlayer explosion;
   
-  Tablero(Juego pjuego) {
-    juego = pjuego;
+  AudioPlayer explosion;
+
+  Tablero() {
     tablero = new Celda [cantFilas][cantCols];
 
     for(int i=0; i<cantFilas;i++) {
@@ -16,6 +15,9 @@ class Tablero {
         tablero[i][j] = new Celda(i,j,tamCelda);
       }
     }
+
+    posicionInicial();
+    
     explosion = minim.loadFile("explosion.wav");
   }
 
@@ -51,8 +53,6 @@ class Tablero {
           if(celda.pieza != null){
             seleccionarPieza(celda.pieza);
             return piezaSeleccionada;
-          }else{
-            piezaSeleccionada.deseleccionar();
           }
         }
       }
@@ -62,11 +62,13 @@ class Tablero {
 
   void moverPieza(Pieza ppieza, String pdir) {
     Celda celda = tablero[ppieza.posXTablero][ppieza.posYTablero];
-
+    println(ppieza.posXTablero + " " + ppieza.posYTablero);
     if(pdir == "N") {
       if(celda.posYTablero > 0 && tablero[ppieza.posXTablero][ppieza.posYTablero-1].pieza == null) {
         tablero[ppieza.posXTablero][ppieza.posYTablero].quitarPieza();
         tablero[ppieza.posXTablero][ppieza.posYTablero-1].ponerPieza(ppieza,ppieza.rot);
+
+        //celdaNueva.pieza.mover(pdir);
       }
     }
 
@@ -74,6 +76,7 @@ class Tablero {
       if(celda.posYTablero < cantCols-1 && tablero[ppieza.posXTablero][ppieza.posYTablero+1].pieza == null) {
         tablero[ppieza.posXTablero][ppieza.posYTablero].quitarPieza();
         tablero[ppieza.posXTablero][ppieza.posYTablero+1].ponerPieza(ppieza,ppieza.rot);
+        //celdaNueva.pieza.mover(pdir);
       }
     }
 
@@ -81,6 +84,7 @@ class Tablero {
       if(celda.posXTablero < cantFilas-1 && tablero[ppieza.posXTablero+1][ppieza.posYTablero].pieza == null) {
         tablero[ppieza.posXTablero][ppieza.posYTablero].quitarPieza();        
         tablero[ppieza.posXTablero+1][ppieza.posYTablero].ponerPieza(ppieza,ppieza.rot);
+        //celdaNueva.pieza.mover(pdir);
       }
     }
 
@@ -88,6 +92,7 @@ class Tablero {
       if(celda.posXTablero > 0 && tablero[ppieza.posXTablero-1][ppieza.posYTablero].pieza == null) {
         tablero[ppieza.posXTablero][ppieza.posYTablero].quitarPieza();
         tablero[ppieza.posXTablero-1][ppieza.posYTablero].ponerPieza(ppieza,ppieza.rot);
+        //celdaNueva.pieza.mover(pdir);
       }
     }
   }
@@ -97,11 +102,7 @@ class Tablero {
     explosion.play(1);
   }
 
-  void configuracion1() {
-    Pieza piezaLaser1 = new Esfinge(1,juego);
-    juego.laserJugador1(piezaLaser1);
-    tablero[0][0].ponerPieza(piezaLaser1,270);
-    
+  void posicionInicial() {
     tablero[0][3].ponerPieza(new Piramide(1),90);
     tablero[0][4].ponerPieza(new Piramide(1),180);
     tablero[2][3].ponerPieza(new Piramide(2),270);
@@ -135,10 +136,6 @@ class Tablero {
 
     tablero[4][4].ponerPieza(new Anubis(2),0);
     tablero[5][4].ponerPieza(new Anubis(2),90);
-    
-    Pieza piezaLaser2 = new Esfinge(2,juego);
-    juego.laserJugador2(piezaLaser2);
-    tablero[9][7].ponerPieza(piezaLaser2,90);
   }
 
   boolean salio(int pposX, int pposY) {
@@ -151,15 +148,6 @@ class Tablero {
     }
     piezaSeleccionada = ppieza;
     piezaSeleccionada.seleccionar();
-  }
-  
-  void resetear(){
-    for(int i=0; i<cantFilas;i++) {
-      for(int j=0; j<cantCols;j++) {
-        Celda celda = tablero[i][j];
-        celda.quitarPieza();
-      }
-    }
   }
   
   void stop(){
