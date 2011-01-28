@@ -55,9 +55,9 @@ class Juego{
   
   void dispararLaser(){
     if(turnoJugador == 1){
-      laserJugador1.disparar(esfingeJugador1.posX+tablero.tamCelda/2,esfingeJugador1.posY+tablero.tamCelda/2,esfingeJugador1.getDireccion(),this);//(tablero.tamCelda/2,0,"S",this);
+      laserJugador1.disparar(esfingeJugador1,this);
     }else{
-      laserJugador2.disparar(esfingeJugador2.posX+tablero.tamCelda/2,esfingeJugador2.posY+tablero.tamCelda/2,esfingeJugador2.getDireccion(),this);//(tablero.cantFilas * tablero.tamCelda - tablero.tamCelda/2,tablero.cantCols * tablero.tamCelda,"N",this);
+      laserJugador2.disparar(esfingeJugador2,this);
     }
   }
   
