@@ -1,15 +1,16 @@
 class Pantalla {
   PFont font;
-  Boton botonJ1, botonJ2, botonReglas, botonCreditos, botonVolver;
-  boolean activoBotonJ1, activoBotonJ2, activoBotonReglas, activoBotonCreditos, activoBotonVolver;
+  Boton botonJ1, botonJ2, botonJ3, botonReglas, botonCreditos, botonVolver;
+  boolean activoBotonJ1, activoBotonJ2, activoBotonJ3, activoBotonReglas, activoBotonCreditos, activoBotonVolver;
   Juego juego;
 
   Pantalla() {
     font = loadFont("Purisa-Bold-32.vlw");
-    botonJ1 = new Boton("1 Jugador",200, 230);
-    botonJ2 = new Boton("2 Jugadores",200, 260);
-    botonReglas = new Boton("Reglas",200, 290);
-    botonCreditos = new Boton("Creditos",200, 320);
+    botonJ1 = new Boton("Classic",200, 230);
+    botonJ2 = new Boton("Imhotep",200, 260);
+    botonJ3 = new Boton("Dynasty",200, 290);
+    botonReglas = new Boton("Reglas",200, 320);
+    botonCreditos = new Boton("Creditos",200, 350);
     botonVolver = new Boton("Volver", 400, 370);
 
     resetearEstadoBotones();
@@ -17,10 +18,7 @@ class Pantalla {
   }
 
   void dibujar() {
-    if(activoBotonJ1) {
-      pantalla2();
-    }
-    else if(activoBotonJ2) {
+    if(activoBotonJ1 || activoBotonJ2 || activoBotonJ3) {
       juego.dibujar();
     }
     else if(activoBotonReglas) {
@@ -36,14 +34,20 @@ class Pantalla {
   }
 
   void click() {
-    if(!activoBotonJ2) {
+    if(!activoBotonJ1 && !activoBotonJ2 && !activoBotonJ3) {
       if(botonJ1.click()) {
         activoBotonJ1 = true;
+        juego.iniciar(1);
       }
       if(botonJ2.click()) {
         activoBotonJ2 = true;
-        juego.iniciar(1);
+        juego.iniciar(2);
       }
+      if(botonJ3.click()) {
+        activoBotonJ3 = true;
+        juego.iniciar(3);
+      }
+      
       if(botonReglas.click()) {
         activoBotonReglas = true;
       }
@@ -61,11 +65,11 @@ class Pantalla {
   }
 
   void press() {
-    if(activoBotonJ2 && ((key == 'r') || (key == 'R'))) {
+    if((activoBotonJ1 || activoBotonJ2 || activoBotonJ3) && ((key == 'r') || (key == 'R'))) {
       resetearEstadoBotones();
     }
     else { 
-      if(activoBotonJ2) {
+      if(activoBotonJ1 || activoBotonJ2 || activoBotonJ3) {
         juego.press();
       }
     }
@@ -75,15 +79,9 @@ class Pantalla {
     tituloJuego();
     botonJ1.dibujar();
     botonJ2.dibujar();
+    botonJ3.dibujar();
     botonReglas.dibujar();
     botonCreditos.dibujar();
-  }
-
-  void pantalla2() {
-    tituloJuego();
-    textFont(font, 20); 
-    text("Se ve que no tenes muchos amigos y queres jugar solo. Mejor buscate mas amigos y juga de a dos!!", 50, 150,450,200);
-    botonVolver.dibujar();
   }
 
   void pantalla3() {
@@ -116,6 +114,7 @@ class Pantalla {
   void resetearEstadoBotones() {
     activoBotonJ1 = false;
     activoBotonJ2 = false;
+    activoBotonJ3 = false;
     activoBotonReglas = false;
     activoBotonCreditos = false;
     activoBotonVolver = false;

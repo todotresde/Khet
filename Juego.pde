@@ -75,6 +75,12 @@ class Juego{
     if(tipoJuego == 1){
       tablero.configuracion1(esfingeJugador1,esfingeJugador2);
     }
+    if(tipoJuego == 2){
+      tablero.configuracion2(esfingeJugador1,esfingeJugador2);
+    }
+    if(tipoJuego == 3){
+      tablero.configuracion3(esfingeJugador1,esfingeJugador2);
+    }
   }
   
   void stop(){

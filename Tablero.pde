@@ -137,6 +137,47 @@ class Tablero {
     
     tablero[9][7].ponerPieza(esfingeJuegador2,90);
   }
+  
+  void configuracion2(Esfinge esfingeJuegador1, Esfinge esfingeJuegador2) {
+    tablero[0][0].ponerPieza(esfingeJuegador1,270);
+
+    tablero[4][0].ponerPieza(new Obelisco(1),180);
+    tablero[5][0].ponerPieza(new Faraon(1),180);
+    tablero[6][0].ponerPieza(new Obelisco(1),180);
+    tablero[7][0].ponerPieza(new Anubis(1),0);
+
+    tablero[0][3].ponerPieza(new Piramide(1),90);
+    tablero[0][4].ponerPieza(new Piramide(1),180);
+    tablero[1][3].ponerPieza(new Piramide(2),270);
+    tablero[1][4].ponerPieza(new Piramide(2),0);
+
+    tablero[3][2].ponerPieza(new Piramide(2),0);
+    tablero[6][2].ponerPieza(new Piramide(1),90);
+    
+    tablero[4][3].ponerPieza(new Piramide(2),180);
+    tablero[4][4].ponerPieza(new Anubis(2),0);
+    tablero[5][4].ponerPieza(new Piramide(1),0);
+    tablero[5][3].ponerPieza(new Anubis(1),0);
+    
+    tablero[3][5].ponerPieza(new Piramide(2),270);
+    tablero[6][5].ponerPieza(new Piramide(1),180);
+    
+    tablero[8][3].ponerPieza(new Piramide(1),180);
+    tablero[8][4].ponerPieza(new Piramide(1),90);
+    tablero[9][3].ponerPieza(new Piramide(2),0);
+    tablero[9][4].ponerPieza(new Piramide(2),270);
+
+    tablero[2][7].ponerPieza(new Anubis(2),0);
+    tablero[3][7].ponerPieza(new Obelisco(2),0);
+    tablero[4][7].ponerPieza(new Faraon(2),0);
+    tablero[5][7].ponerPieza(new Obelisco(2),0);
+    
+    tablero[9][7].ponerPieza(esfingeJuegador2,90);
+  }
+  
+  void configuracion3(Esfinge esfingeJuegador1, Esfinge esfingeJuegador2) {
+    
+  }
 
   boolean salio(int pposX, int pposY) {
     return(pposX > cantFilas*tamCelda || pposX < 0 || pposY > cantCols*tamCelda || pposY < 0);
