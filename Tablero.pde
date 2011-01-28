@@ -51,7 +51,9 @@ class Tablero {
             seleccionarPieza(celda.pieza);
             return piezaSeleccionada;
           }else{
-            piezaSeleccionada.deseleccionar();
+            if(piezaSeleccionada != null){
+              piezaSeleccionada.deseleccionar();
+            }
           }
         }
       }
