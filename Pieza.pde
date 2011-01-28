@@ -184,5 +184,21 @@ class Pieza {
   void stop(){
     //audioMoverPieza.close();
   }
+  
+  String getDireccion(){
+    if(rot == 0){
+      return "O";
+    }
+    if(rot == 90){
+      return "N";
+    }
+    if(rot == 180){
+      return "E";
+    }
+    if(rot == 270){
+      return "S";
+    }
+    return "";
+  }
 }
 

@@ -96,8 +96,8 @@ class Tablero {
     explosion.play(1);
   }
 
-  void configuracion1() {
-    tablero[0][0].ponerPieza(new Esfinge(1),270);
+  void configuracion1(Esfinge esfingeJuegador1, Esfinge esfingeJuegador2) {
+    tablero[0][0].ponerPieza(esfingeJuegador1,270);
     
     tablero[0][3].ponerPieza(new Piramide(1),90);
     tablero[0][4].ponerPieza(new Piramide(1),180);
@@ -133,7 +133,7 @@ class Tablero {
     tablero[4][4].ponerPieza(new Anubis(2),0);
     tablero[5][4].ponerPieza(new Anubis(2),90);
     
-    tablero[9][7].ponerPieza(new Esfinge(2),90);
+    tablero[9][7].ponerPieza(esfingeJuegador2,90);
   }
 
   boolean salio(int pposX, int pposY) {

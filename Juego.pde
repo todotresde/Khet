@@ -3,12 +3,15 @@ class Juego{
   Tablero tablero;
   Pieza piezaSeleccionada;
   int turnoJugador;
+  Esfinge esfingeJugador1,esfingeJugador2;
   
   Juego(){
     tablero = new Tablero();
     laserJugador1 = new Laser();
     laserJugador2 = new Laser();
     turnoJugador = 1;
+    esfingeJugador1 = new Esfinge(1);
+    esfingeJugador2 = new Esfinge(2);
   }
   
   void dibujar(){
@@ -52,9 +55,9 @@ class Juego{
   
   void dispararLaser(){
     if(turnoJugador == 1){
-      laserJugador1.disparar(tablero.tamCelda/2,0,"S",this);
+      laserJugador1.disparar(esfingeJugador1.posX+tablero.tamCelda/2,esfingeJugador1.posY+tablero.tamCelda/2,esfingeJugador1.getDireccion(),this);//(tablero.tamCelda/2,0,"S",this);
     }else{
-      laserJugador2.disparar(tablero.cantFilas * tablero.tamCelda - tablero.tamCelda/2,tablero.cantCols * tablero.tamCelda,"N",this);
+      laserJugador2.disparar(esfingeJugador2.posX+tablero.tamCelda/2,esfingeJugador2.posY+tablero.tamCelda/2,esfingeJugador2.getDireccion(),this);//(tablero.cantFilas * tablero.tamCelda - tablero.tamCelda/2,tablero.cantCols * tablero.tamCelda,"N",this);
     }
   }
   
@@ -70,7 +73,7 @@ class Juego{
   void iniciar(int tipoJuego){
     tablero.resetear();
     if(tipoJuego == 1){
-      tablero.configuracion1();
+      tablero.configuracion1(esfingeJugador1,esfingeJugador2);
     }
   }
   
