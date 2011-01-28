@@ -9,14 +9,9 @@ class Laser {
 
   AudioPlayer laser;
 
-  Laser(int pposX, int pposY, String pdir, Juego pjuego) {
+  Laser() {
     miniLasers = new MiniLaser[1000];
     disparar = false;
-    agregarMiniLaser(pposX,pposY,pdir);
-    originalDir = pdir;
-    posX = pposX;
-    posY = pposY;
-    juego = pjuego;
 
     laser = minim.loadFile("laser.wav");
   }
@@ -86,7 +81,13 @@ class Laser {
     }
   }
 
-  void disparar() {
+  void disparar(int pposX, int pposY, String pdir, Juego pjuego) {
+    agregarMiniLaser(pposX,pposY,pdir);
+    originalDir = pdir;
+    posX = pposX;
+    posY = pposY;
+    juego = pjuego;
+    
     disparar = true;
     laser.play(3);
   }

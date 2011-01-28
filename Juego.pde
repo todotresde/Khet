@@ -6,8 +6,8 @@ class Juego{
   
   Juego(){
     tablero = new Tablero();
-    laserJugador1 = new Laser(tablero.tamCelda/2,0,"S",this);
-    laserJugador2 = new Laser(tablero.cantFilas * tablero.tamCelda - tablero.tamCelda/2,tablero.cantCols * tablero.tamCelda,"N",this);
+    laserJugador1 = new Laser();
+    laserJugador2 = new Laser();
     turnoJugador = 1;
   }
   
@@ -51,11 +51,10 @@ class Juego{
   }
   
   void dispararLaser(){
-    println("T" + turnoJugador);
     if(turnoJugador == 1){
-      laserJugador1.disparar();
+      laserJugador1.disparar(tablero.tamCelda/2,0,"S",this);
     }else{
-      laserJugador2.disparar();
+      laserJugador2.disparar(tablero.cantFilas * tablero.tamCelda - tablero.tamCelda/2,tablero.cantCols * tablero.tamCelda,"N",this);
     }
   }
   
