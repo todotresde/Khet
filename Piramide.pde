@@ -16,5 +16,6 @@ class Piramide extends Pieza {
     imageMode(CENTER);
     imagenPieza = loadImage("piramide.png");
   }
+  
 }
 

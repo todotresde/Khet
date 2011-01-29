@@ -36,11 +36,13 @@ class Laser {
               rebote(pieza.direccion(miniLasers[i].dir));
               ultimaPieza = pieza;
               return 1;
-            }
-            else {
+            }else if(pieza.remover(miniLasers[i].dir)){
               ptablero.quitarPieza(pieza);
               limpiarLaser();
               //juego.cambiarTurnoJugador();
+              return 1;
+            }else{
+              limpiarLaser();
               return 1;
             }
           }

@@ -201,5 +201,30 @@ class Pieza {
     }
     return "";
   }
+  
+  String getDireccionOpuesta(){
+    if(rot == 0){
+      return "E";
+    }
+    if(rot == 90){
+      return "S";
+    }
+    if(rot == 180){
+      return "O";
+    }
+    if(rot == 270){
+      return "N";
+    }
+    return "";
+  }
+  
+  boolean remover(){
+    return true;
+  }
+  
+  boolean remover(String pdir){
+    return true;
+  }
 }
+
 

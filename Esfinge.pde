@@ -20,5 +20,9 @@ class Esfinge extends Pieza {
   String direccion(String pdir) { 
     return "";
   }
+  
+  boolean remover(String pdir){
+    return false;
+  }
 }
 

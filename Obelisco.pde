@@ -20,5 +20,13 @@ class Obelisco extends Pieza {
   String direccion(String pdir) { 
     return "";
   }
+  
+  boolean remover(String pdir){
+    println(pdir + "-------" + getDireccionOpuesta());
+    if(pdir == getDireccionOpuesta()){
+      return false;
+    }
+    return true;
+  }
 }
 
