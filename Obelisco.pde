@@ -22,7 +22,6 @@ class Obelisco extends Pieza {
   }
   
   boolean remover(String pdir){
-    println(pdir + "-------" + getDireccionOpuesta());
     if(pdir == getDireccionOpuesta()){
       return false;
     }
