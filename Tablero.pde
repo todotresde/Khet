@@ -12,9 +12,9 @@ class Tablero {
 
     for(int i=0; i<cantFilas;i++) {
       for(int j=0; j<cantCols;j++) {
-        if((i == cantFilas-1)  || (i == 1 && j == 0) ){
+        if((i == cantFilas-1)  || (i == 1 && j == 0)  || (i == 1 && j == cantCols-1)){
           tablero[i][j] = new Celda(i,j,tamCelda,1);
-        }else if((i == 0) || (i == cantFilas-2 && j == cantCols-1) ){
+        }else if((i == 0) || (i == cantFilas-2 && j == cantCols-1)  || (i == cantFilas-2 && j == 0)){
           tablero[i][j] = new Celda(i,j,tamCelda,2);
         }else{
           tablero[i][j] = new Celda(i,j,tamCelda);

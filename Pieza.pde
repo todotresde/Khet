@@ -163,6 +163,7 @@ class Pieza {
     if(rot == -90) {
       rot = 270;
     }
+    audioMoverPieza.play(3);
   }
   
   void seleccionar(){
