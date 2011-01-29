@@ -40,14 +40,14 @@ class Laser {
             else {
               ptablero.quitarPieza(pieza);
               limpiarLaser();
-              juego.cambiarTurnoJugador();
+              //juego.cambiarTurnoJugador();
               return 1;
             }
           }
           else {
             if(ptablero.salio(miniLasers[i].pX,miniLasers[i].pY)) {
               limpiarLaser();
-              juego.cambiarTurnoJugador();
+              //juego.cambiarTurnoJugador();
               println("Fin Turno");
               return 1;
             }
