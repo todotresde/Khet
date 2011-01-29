@@ -3,15 +3,18 @@ class Pantalla {
   Boton botonJ1, botonJ2, botonJ3, botonReglas, botonCreditos, botonVolver;
   boolean activoBotonJ1, activoBotonJ2, activoBotonJ3, activoBotonReglas, activoBotonCreditos, activoBotonVolver;
   Juego juego;
-
+  PImage imagenTop;
+  
   Pantalla() {
     font = loadFont("Purisa-Bold-32.vlw");
-    botonJ1 = new Boton("Classic",200, 230);
-    botonJ2 = new Boton("Imhotep",200, 260);
-    botonJ3 = new Boton("Dynasty",200, 290);
+    botonJ1 = new Boton("Classic",200, 170);
+    botonJ2 = new Boton("Imhotep",200, 200);
+    botonJ3 = new Boton("Dynasty",200, 230);
     botonReglas = new Boton("Reglas",200, 320);
     botonCreditos = new Boton("Creditos",200, 350);
     botonVolver = new Boton("Volver", 400, 370);
+   
+    imagenTop = loadImage("top.png");
 
     resetearEstadoBotones();
     juego = new Juego();
@@ -107,8 +110,10 @@ class Pantalla {
   }
 
   void tituloJuego() {
-    textFont(font, 52); 
-    text("Khet", 150, 80);
+    //textFont(font, 52); 
+    //text("Khet", 150, 80);
+    imageMode(CORNER);
+    image(imagenTop, 0, 0,width,100);
   }
 
   void resetearEstadoBotones() {
