@@ -84,31 +84,33 @@ class Laser {
   }
 
   void disparar(Pieza pieza, Juego pjuego) {
-    originalDir = pieza.getDireccion();
+    if(!disparar){
+      originalDir = pieza.getDireccion();
+      
+      if(originalDir == "N") {
+        posX = pieza.posX + pieza.tam/2;
+        posY = pieza.posY;
+      }
+      if(originalDir == "S") {
+        posX = pieza.posX + pieza.tam/2;
+        posY = pieza.posY + pieza.tam;
+      }
+      if(originalDir == "E") {
+        posX = pieza.posX + pieza.tam;
+        posY = pieza.posY + pieza.tam/2;
+      }
+      if(originalDir == "O") {
+        posX = pieza.posX;
+        posY = pieza.posY + pieza.tam/2;
+      }
     
-    if(originalDir == "N") {
-      posX = pieza.posX + pieza.tam/2;
-      posY = pieza.posY;
+      agregarMiniLaser(posX, posY, originalDir);
+      
+      juego = pjuego;
+      
+      disparar = true;
+      laser.play(3);
     }
-    if(originalDir == "S") {
-      posX = pieza.posX + pieza.tam/2;
-      posY = pieza.posY + pieza.tam;
-    }
-    if(originalDir == "E") {
-      posX = pieza.posX + pieza.tam;
-      posY = pieza.posY + pieza.tam/2;
-    }
-    if(originalDir == "O") {
-      posX = pieza.posX;
-      posY = pieza.posY + pieza.tam/2;
-    }
-    
-    agregarMiniLaser(posX, posY, originalDir);
-    
-    juego = pjuego;
-    
-    disparar = true;
-    laser.play(3);
   }
 
   void limpiarLaser() {
