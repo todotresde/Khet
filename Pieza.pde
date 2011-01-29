@@ -65,7 +65,7 @@ class Pieza {
   void setColor(){
     if(tipo == 1){
       if(!seleccionada){
-        fill(0,0,255,100);
+        fill(0,0,0,0);
       }else{
         fill(0,255,255,100);
       }

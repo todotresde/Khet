@@ -60,7 +60,7 @@ class Celda {
       imagenCelda = loadImage("celda-roja.png");
     }
     else {
-      imagenCelda = loadImage("celda-azul.png");
+      imagenCelda = loadImage("celda-silver.png");
     }
   }
 }
