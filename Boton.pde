@@ -5,11 +5,11 @@ class Boton{
    
    
    Boton(String ptexto,int pposX,int pposY){
-     font = loadFont("Purisa-Bold-32.vlw");
+     font = loadFont("Arial-BoldMT-24.vlw");
      texto = ptexto;
      posX = pposX;
      posY = pposY;
-     fontSize = 20;
+     fontSize = 22;
      tamX = round(textWidth(texto)) * 2;
      tamY = fontSize;
    }

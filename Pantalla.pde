@@ -6,10 +6,10 @@ class Pantalla {
   PImage imagenTop;
   
   Pantalla() {
-    font = loadFont("Purisa-Bold-32.vlw");
-    botonJ1 = new Boton("Classic",200, 170);
-    botonJ2 = new Boton("Imhotep",200, 200);
-    botonJ3 = new Boton("Dynasty",200, 230);
+    font = loadFont("Arial-BoldMT-24.vlw");
+    botonJ1 = new Boton("- Classic",200, 170);
+    botonJ2 = new Boton("- Imhotep",200, 200);
+    botonJ3 = new Boton("- Dynasty",200, 230);
     botonReglas = new Boton("Reglas",200, 320);
     botonCreditos = new Boton("Creditos",200, 350);
     botonVolver = new Boton("Volver", 400, 370);
