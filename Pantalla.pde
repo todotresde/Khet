@@ -89,16 +89,20 @@ class Pantalla {
 
   void pantalla3() {
     tituloJuego();
-    textFont(font, 15); 
-    text("* Con la 'S' dispara el laser.",50,150);
-    textFont(font, 15);
-    text("* Con el mouse se selecciona la ficha.", 50, 190);
-    textFont(font, 15);
-    text("* Con 'Z' y 'X' se rota la ficha.", 50, 230);
-    textFont(font, 15);
-    text("* Con las flechas del teclado se mueve la ficha.", 50, 270, 450, 400);
-    textFont(font, 15);
-    text("* Con la 'R' durante el juego, vuelve al menu principal.", 50, 310, 450, 400);
+    textFont(font, 12); 
+    text("* Se debe seleccionar la Esfinge en cada turno, y con la 'S' dispara el laser.",40,150,450, 400);
+    textFont(font, 12);
+    text("* Con el mouse se selecciona la ficha que se desea mover.", 40, 190,450, 400);
+    textFont(font, 12);
+    text("* Con 'Z' y 'X' se rota la ficha seleccionada.", 40, 210,450, 400);
+    textFont(font, 12);
+    text("* Con las flechas del teclado se mueve la ficha seleccionada.", 40, 230, 450, 400);
+    textFont(font, 12);
+    text("* Con la 'R' durante el juego, vuelve al menu principal.", 40, 250, 450, 400);
+    textFont(font, 12); 
+    text("* La Esfinge solo debe rotar en el lugar de inicio. La misma nunca muere.",40,270,450, 400);
+    textFont(font, 12); 
+    text("* La pieza Obelisco no muere si el laser le pega de frente.",40,310,450, 400);
     botonVolver.dibujar();
   }
 
